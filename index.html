@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-translate-key="pageTitle">Portfólio - Marco</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/ea3cbedf97.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <!--========== BOTÕES FIXOS (TEMA E IDIOMA) ==========-->
+  <div class="fixed-buttons">
+    <button id="languageToggle" class="toggle-btn">
+      <span id="languageIcon">EN</span>
+    </button>
+    <button id="themeToggle" class="toggle-btn">
+      <!-- Ícone padrão do tema claro (lua branca) -->
+      <i class="fas fa-moon moon-icon"></i>
+    </button>
+  </div>
+
+  <!--========== HEADER / NAVBAR ==========-->
+  <header id="header">
+    <div class="logo" data-translate-key="logoText">Marco</div>
+    <nav class="navbar" id="navbar">
+      <ul>
+        <li><a href="#hero" data-translate-key="menuHome">Início</a></li>
+        <li><a href="#about" data-translate-key="menuAbout">Sobre Mim</a></li>
+        <li><a href="#techs" data-translate-key="menuTechs">Tecnologias</a></li>
+        <li><a href="#projects" data-translate-key="menuProjects">Projetos</a></li>
+        <li><a href="#contact" data-translate-key="menuContact">Contato</a></li>
+      </ul>
+    </nav>
+    <!-- Ícone Menu Mobile -->
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+<!--========== SEÇÃO HERO (Welcome Section) ==========-->
+<section id="hero" class="hero-section">
+    <div class="hero-container">
+      <h1 class="hello-world" id="helloWorld"></h1>
+      <p class="hero-subtitle" data-translate-key="heroSubtitle">
+        Bem-vindo ao meu portfólio, explore e descubra mais sobre mim!
+      </p>
+      <button class="hero-btn" onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' });" data-translate-key="heroBtn">
+        Saiba Mais
+      </button>
+    </div>
+  </section>  
+
+  <!--========== SEÇÃO: ABOUT ME ==========-->
+<section id="about" class="section">
+    <div class="about-content">
+      <div class="about-text">
+        <h2 data-translate-key="aboutTitle">Sobre Mim</h2>
+        <p id="aboutText" data-translate-key="aboutText">
+          Sou Marco, um profissional de 24 anos apaixonado por tecnologia e inovação. 
+          Com experiência em análise estratégica, desenvolvimento Full Stack e automação de processos, 
+          estou sempre explorando novas soluções para desafios do mundo digital. 
+          Busco aprimorar minhas habilidades e contribuir para projetos impactantes.
+        </p>
+      </div>
+      <div class="about-cards">
+        <!-- Habilidades -->
+        <div class="info-card">
+          <h3 data-translate-key="skillsTitle">Habilidades</h3>
+          <ul>
+            <li><i class="fas fa-code"></i> Python (Avançado)</li>
+            <li><i class="fas fa-database"></i> React (Avançado)</li>
+            <li><i class="fas fa-chart-line"></i> Swift (Intermediario) </li>
+            <li><i class="fas fa-robot"></i> Java (Intermediario)</li>
+            <li><i class="fas fa-robot"></i> javascript (Intermediario)</li>
+            <li><i class="fas fa-robot"></i> SQL (Avançado)</li>
+          </ul>
+        </div>
+        <!-- Especialidades -->
+        <div class="info-card">
+          <h3 data-translate-key="specialtiesTitle">Especialidades</h3>
+          <ul>
+            <li><i class="fas fa-server"></i> Backend Development</li>
+            <li><i class="fas fa-cogs"></i> Process Automation</li>
+            <li><i class="fas fa-database"></i> Data-Driven Solutions</li>
+            <li><i class="fas fa-laptop-code"></i> Full Stack Development</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  <!--========== SEÇÃO: TECHS ==========-->
+  <section id="techs" class="section">
+    <h2 data-translate-key="techsTitle">Tecnologias</h2>
+    <div class="tech-icons">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="python" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rstudio/rstudio-original.svg" alt="rstudio" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="html5" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="css3" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="javascript" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="nodejs" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="react" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="java" />
+    </div>
+  </section>
+
+  <!--========== SEÇÃO: PROJECTS ==========-->
+  <section id="projects" class="section">
+    <h2 data-translate-key="projectsTitle">Projetos</h2>
+    <div class="projects-container">
+      <!-- Projeto 1 -->
+      <div class="project-card">
+        <div class="project-content">
+          <h3>Ho Hub</h3>
+          <p data-translate-key="project1desc">
+            Aplicativo para gerenciar e organizar torneios e competições profissionais. Clique para ver o repositório.
+          </p>
+        </div>
+        <a href="https://github.com/oDuPrado/Ho-Hub-app-" target="_blank" class="project-link"></a>
+      </div>
+      <!-- Projeto 2 -->
+      <div class="project-card">
+        <div class="project-content">
+          <h3>ONG Amicats</h3>
+          <p data-translate-key="project2desc">
+            Aplicativo web para gerenciar formularios medicos de gatos regastados. Clique para ver o repositório.
+          </p>
+        </div>
+        <a href="https://github.com/oDuPrado/ong-amicats_app" target="_blank" class="project-link"></a>
+      </div>
+      <!-- Projeto 3 -->
+      <div class="project-card">
+        <div class="project-content">
+          <h3>Web Busca</h3>
+          <p data-translate-key="project3desc">
+            Aplicação web para busca eficiente de informações. Clique para ver o repositório.
+          </p>
+        </div>
+        <a href="https://github.com/oDuPrado/web_busca" target="_blank" class="project-link"></a>
+      </div>
+    </div>
+  </section>
+
+  <!--========== SEÇÃO: CONTACT (SOCIAL MEDIA) =========-->
+<section id="contact" class="section">
+    <h2 data-translate-key="contactTitle">Contato</h2>
+    <div class="contact-cards">
+  
+      <!-- LinkedIn -->
+      <div class="contact-card">
+        <a href="https://www.linkedin.com/in/marcoauréliomacedoprado" target="_blank">
+          <i class="fab fa-linkedin fa-2x"></i>
+          <span>LinkedIn</span>
+        </a>
+      </div>
+  
+      <!-- Instagram -->
+      <div class="contact-card">
+        <a href="https://www.instagram.com/prado.marco1/" target="_blank">
+          <i class="fab fa-instagram fa-2x"></i>
+          <span>Instagram</span>
+        </a>
+      </div>
+  
+      <!-- WhatsApp -->
+      <div class="contact-card">
+        <a href="https://wa.me/5567996893356" target="_blank">
+          <i class="fab fa-whatsapp fa-2x"></i>
+          <span>WhatsApp</span>
+        </a>
+      </div>
+  
+      <!-- Discord -->
+      <div class="contact-card">
+        <a href="https://discord.com/users/yourdiscordid" target="_blank">
+          <i class="fab fa-discord fa-2x"></i>
+          <span>Discord</span>
+        </a>
+      </div>
+  
+    </div>
+  </section>
+  
+
+ <!--========== BOTÃO SETA VOLTAR AO TOPO ==========-->
+<button id="backToTop" title="Voltar ao topo">
+    <i class="fas fa-chevron-up"></i>
+  </button>  
+
+  <!--========== FOOTER ==========-->
+  <footer>
+    <p>© 2025 Marco - Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- Script JS -->
+  <script src="script.js"></script>
+</body>
+</html>
