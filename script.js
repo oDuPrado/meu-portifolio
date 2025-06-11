@@ -1,6 +1,4 @@
-// ===================
-// Seleciona elementos
-// ===================
+// ========== ELEMENTS ==========
 const body = document.body;
 const hamburger = document.getElementById("hamburger");
 const navbar = document.getElementById("navbar");
@@ -8,170 +6,149 @@ const backToTopButton = document.getElementById("backToTop");
 const themeToggle = document.getElementById("themeToggle");
 const languageToggle = document.getElementById("languageToggle");
 const languageIcon = document.getElementById("languageIcon");
+const helloWorld = document.getElementById("helloWorld");
 
-// ===================
-// MENU HAMBÚRGUER
-// ===================
-hamburger.addEventListener("click", () => {
-  navbar.querySelector("ul").classList.toggle("active");
-});
+// ========== HAMBURGER ==========
+hamburger.addEventListener("click", () =>
+  navbar.querySelector("ul").classList.toggle("active")
+);
 
+// ========== TYPING EFFECT ==========
+const helloText = "Hello, World!";
+let idx = 0,
+  del = false;
+(function typeLoop() {
+  helloWorld.textContent = helloText.substring(0, idx);
+  idx += del ? -1 : 1;
+  if (idx === helloText.length + 1) {
+    del = true;
+    setTimeout(typeLoop, 800);
+  } else if (idx === 0) {
+    del = false;
+    setTimeout(typeLoop, 400);
+  } else setTimeout(typeLoop, del ? 60 : 110);
+})();
 
-// ===================
-// EFEITO DE DIGITAÇÃO EM LOOP
-// ===================
-const helloWorldElement = document.getElementById("helloWorld");
-const text = "Hello, World!";
-let index = 0;
-let isDeleting = false;
+// ========== BACK TO TOP ==========
+window.addEventListener("scroll", () =>
+  backToTopButton.classList.toggle("show", window.scrollY > 300)
+);
+backToTopButton.addEventListener("click", () =>
+  window.scrollTo({ top: 0, behavior: "smooth" })
+);
 
-function typeEffect() {
-  if (!isDeleting) {
-    helloWorldElement.textContent = text.substring(0, index++);
-  } else {
-    helloWorldElement.textContent = text.substring(0, index--);
-  }
-
-  if (index > text.length) {
-    isDeleting = true;
-    setTimeout(typeEffect, 1000); // Aguarda antes de apagar
-  } else if (index < 0) {
-    isDeleting = false;
-    setTimeout(typeEffect, 500); // Aguarda antes de começar de novo
-  } else {
-    setTimeout(typeEffect, isDeleting ? 50 : 100); // Velocidade de digitação e apagamento
-  }
-}
-
-// Inicia a animação
-typeEffect();
-
-
-// ===================
-// BOTÃO VOLTAR AO TOPO
-// ===================
-
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 300) {
-    backToTopButton.classList.add("show");
-  } else {
-    backToTopButton.classList.remove("show");
-  }
-});
-
-backToTopButton.addEventListener("click", () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
-});
-
-
-// ===================
-// TEMA CLARO/ESCURO
-// ===================
+// ========== THEME TOGGLE ==========
 themeToggle.addEventListener("click", () => {
   body.classList.toggle("dark-theme");
-
-  // Alterna ícones: se estiver no dark-theme, mostramos sol (preto). 
-  if (body.classList.contains("dark-theme")) {
-    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-  } else {
-    themeToggle.innerHTML = '<i class="fas fa-moon moon-icon"></i>';
-  }
+  themeToggle.innerHTML = body.classList.contains("dark-theme")
+    ? '<i class="fas fa-sun"></i>'
+    : '<i class="fas fa-moon moon-icon"></i>';
 });
 
-// ===================
-// TRADUÇÕES
-// ===================
+// ========== TRANSLATIONS ==========
+// Perfil profissional orientado a recrutadores
 const translations = {
-    pt: {
-      pageTitle: "Portfólio - Marco",
-      logoText: "Marco",
-      menuHome: "Início",
-      menuAbout: "Sobre Mim",
-      menuTechs: "Tecnologias",
-      menuProjects: "Projetos",
-      menuContact: "Contato",
-      heroTitle: "Hello, World!",
-      heroSubtitle: "Bem-vindo ao meu portfólio!",
-      heroBtn: "Saiba Mais",
-      aboutTitle: "Sobre Mim",
-      aboutText: `Sou Marco, um profissional de 24 anos, focado em análise estratégica e liderança de operações. Adoro resolver problemas, otimizar processos e estou sempre buscando aprimorar minhas habilidades em análise de dados e gerenciamento de processos. Pronto para encarar desafios e contribuir para o sucesso da equipe.`,
-      skillsTitle: "Habilidades",
-      specialtiesTitle: "Especialidades",
-      techsTitle: "Tecnologias",
-      projectsTitle: "Projetos",
-      project1desc: "Aplicativo para gerenciar e organizar tarefas. Clique para ver o repositório.",
-      project2desc: "Aplicativo web para gerenciar doações e adoções de gatos. Clique para ver o repositório.",
-      project3desc: "Aplicação web para busca eficiente de informações. Clique para ver o repositório.",
-      contactTitle: "Contato",
-      aboutTitle: "Sobre Mim",
-        aboutText: "Sou Marco, um profissional de 24 anos apaixonado por tecnologia e inovação. Com experiência em análise estratégica, desenvolvimento Full Stack e automação de processos, estou sempre explorando novas soluções para desafios do mundo digital. Busco aprimorar minhas habilidades e contribuir para projetos impactantes.",
-    aboutProjectsBtn: "Ver Projetos",
-    aboutContactBtn: "Entre em Contato",
-    },
-    en: {
-        aboutTitle: "About Me",
-        aboutText: "I'm Marco, a 24-year-old professional passionate about technology and innovation. With experience in strategic analysis, Full Stack development, and process automation, I am always exploring new solutions for digital challenges. I strive to improve my skills and contribute to impactful projects.",
-        aboutProjectsBtn: "View Projects",
-        aboutContactBtn: "Get in Touch",
-      pageTitle: "Portfolio - Marco",
-      logoText: "Marco",
-      menuHome: "Home",
-      menuAbout: "About Me",
-      menuTechs: "Techs",
-      menuProjects: "Projects",
-      menuContact: "Contact",
-      heroTitle: "Hello, World!",
-      heroSubtitle: "Welcome to my portfolio",
-      heroBtn: "Learn More",
-      aboutTitle: "About Me",
-      aboutText: `I'm Marco, a 24-year-old professional focused on strategic analysis and operations leadership. I love problem-solving, process optimization, and I'm always aiming to improve my data analysis and process management skills. Ready to tackle challenges and contribute to the team's success.`,
-      skillsTitle: "Skills",
-      specialtiesTitle: "Specialties",
-      techsTitle: "Techs",
-      projectsTitle: "Projects",
-      project1desc: "App to manage and organize tasks. Click to view the repository.",
-      project2desc: "Web app to manage donations and cat adoptions. Click to view the repository.",
-      project3desc: "Web application for efficient information searching. Click to view the repository.",
-      contactTitle: "Contact",
-    },
-  };
-  
+  pt: {
+    pageTitle: "Portfólio — Marco Prado",
+    logoText: "Marco",
+    menuHome: "Início",
+    menuAbout: "Sobre",
+    menuTechs: "Tecnologias",
+    menuProjects: "Projetos",
+    menuContact: "Contato",
+    heroSubtitle:
+      "Desenvolvimento Full Stack com foco em soluções robustas e inovação tecnológica.",
+    heroBtn: "Ver mais",
+    aboutTitle: "Sobre Mim",
+    aboutText:
+      "Sou Marco Prado, Desenvolvedor Full Stack com 25 anos, especializado em criação de sistemas web e desktop, automação de processos e análise de negócios. Com sólida experiência em tecnologias como Java, React, Python e PostgreSQL, entrego soluções eficientes, escaláveis e alinhadas às necessidades reais dos negócios.",
+    skillsTitle: "Habilidades Técnicas",
+    specialtiesTitle: "Áreas de Atuação",
+    techsTitle: "Tecnologias Utilizadas",
+    projectsTitle: "Projetos em Destaque",
+    project1desc:
+      "Ho Hub — Plataforma integrada para automatizar e centralizar processos de negócio e comunicação entre aplicações distintas.",
+    project2desc:
+      "ONG Amicats — Plataforma web para gestão completa de dados médicos e administrativos de animais resgatados, promovendo agilidade operacional e segurança de dados.",
+    project3desc:
+      "HoStore — Sistema ERP especializado em lojas de Trading Card Games, com gestão integrada de estoque, vendas, emissão fiscal e análise financeira detalhada.",
+    contactTitle: "Entre em Contato",
+  },
 
-// Função para atualizar todos os elementos traduzidos
+  en: {
+    pageTitle: "Marco Prado — Portfolio",
+    logoText: "Marco",
+    menuHome: "Home",
+    menuAbout: "About",
+    menuTechs: "Technologies",
+    menuProjects: "Projects",
+    menuContact: "Contact",
+    heroSubtitle:
+      "Full Stack Development focused on robust solutions and technological innovation.",
+    heroBtn: "Learn more",
+    aboutTitle: "About Me",
+    aboutText:
+      "I'm Marco Prado, a 25-year-old Full Stack Developer specialized in web and desktop applications, process automation, and business analysis. With extensive experience in Java, React, Python, and PostgreSQL, I deliver efficient, scalable solutions aligned with real business needs.",
+    skillsTitle: "Technical Skills",
+    specialtiesTitle: "Expertise Areas",
+    techsTitle: "Technologies Used",
+    projectsTitle: "Featured Projects",
+    project1desc:
+      "Ho Hub — Integrated platform for automating and centralizing business processes and facilitating communication between distinct applications.",
+    project2desc:
+      "Amicats NGO — Web platform managing comprehensive medical and administrative records for rescued animals, promoting operational agility and data security.",
+    project3desc:
+      "HoStore — Specialized ERP system tailored for Trading Card Game stores, featuring integrated inventory management, sales tracking, invoice issuance, and detailed financial analysis.",
+    contactTitle: "Get in Touch",
+  },
+
+  es: {
+    pageTitle: "Portafolio — Marco Prado",
+    logoText: "Marco",
+    menuHome: "Inicio",
+    menuAbout: "Acerca de",
+    menuTechs: "Tecnologías",
+    menuProjects: "Proyectos",
+    menuContact: "Contacto",
+    heroSubtitle:
+      "Desarrollo Full Stack enfocado en soluciones robustas e innovación tecnológica.",
+    heroBtn: "Ver más",
+    aboutTitle: "Acerca de Mí",
+    aboutText:
+      "Soy Marco Prado, Desarrollador Full Stack de 25 años, especializado en sistemas web y de escritorio, automatización de procesos y análisis de negocio. Con sólida experiencia en Java, React, Python y PostgreSQL, entrego soluciones eficientes, escalables y alineadas con las necesidades reales de los negocios.",
+    skillsTitle: "Habilidades Técnicas",
+    specialtiesTitle: "Áreas de Experiencia",
+    techsTitle: "Tecnologías Utilizadas",
+    projectsTitle: "Proyectos Destacados",
+    project1desc:
+      "Ho Hub — Plataforma integrada que automatiza y centraliza procesos empresariales y facilita la comunicación entre aplicaciones diversas.",
+    project2desc:
+      "ONG Amicats — Plataforma web para gestión integral de datos médicos y administrativos de animales rescatados, impulsando agilidad operativa y seguridad de la información.",
+    project3desc:
+      "HoStore — Sistema ERP especializado para tiendas de juegos de cartas coleccionables (TCG), con gestión integrada de inventario, ventas, emisión fiscal y análisis financiero detallado.",
+    contactTitle: "Contacto",
+  },
+};
+
+// Util: atualiza elementos com data-translate-key
 function updateLanguage(lang) {
   document.documentElement.lang = lang;
-
-  for (let key in translations[lang]) {
-    const element = document.querySelector(`[data-translate-key="${key}"]`);
-    if (element) {
-      element.textContent = translations[lang][key];
-    }
-  }
-  // Atualiza título da página
+  Object.keys(translations[lang]).forEach((key) => {
+    const el = document.querySelector(`[data-translate-key="${key}"]`);
+    if (el) el.textContent = translations[lang][key];
+  });
   document.title = translations[lang].pageTitle;
 }
 
-// Define idioma atual
-let currentLanguage = "pt";
-
-// ===================
-// BOTÃO DE IDIOMA
-// ===================
+// ========== LANGUAGE TOGGLE ==========
+const langOrder = ["pt", "en", "es"];
+let currentLangIndex = 0;
 languageToggle.addEventListener("click", () => {
-  if (currentLanguage === "pt") {
-    currentLanguage = "en";
-    languageIcon.textContent = "PT";
-  } else {
-    currentLanguage = "pt";
-    languageIcon.textContent = "EN";
-  }
-  updateLanguage(currentLanguage);
+  currentLangIndex = (currentLangIndex + 1) % langOrder.length;
+  const lang = langOrder[currentLangIndex];
+  languageIcon.textContent = lang.toUpperCase();
+  updateLanguage(lang);
 });
 
-// ===================
-// INICIALIZA TRADUÇÃO
-// ===================
-updateLanguage(currentLanguage);
+// Inicializa
+updateLanguage("pt");
